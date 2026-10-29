@@ -1,0 +1,13 @@
+flowchart LR
+  Admin[Panel React] -->|REST + JWT| API[FastAPI]
+  API --> SQL[(SQL: categorías y documentos)]
+  API --> Mongo[(MongoDB: usuarios)]
+  API --> Redis[(Redis: estado temporal)]
+  API --> PDF[Procesamiento PDF]
+  PDF --> Chroma[(Chroma: fragmentos vectoriales)]
+  Telegram -->|Webhook| Bot[Bot]
+  Bot --> API
+  API --> Chroma
+  Chroma --> Gemini[Gemini]
+  Gemini --> Bot
+
